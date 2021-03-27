@@ -1,8 +1,9 @@
 project('P2D', 'cpp', default_options:['cpp_std=gnu++2a'])
 
 #Standard Deps
-sdl2 = dependency('SDL2')
+sdl2_core = dependency('SDL2')
 sdl2_image = dependency('SDL2_image')
+sdl2_mixer = dependency('SDL2_mixer')
 lua = dependency('lua')
 #Replace 'lua' with whatever flavor you prefer, IE: luajit, lua, lua53, lua52, lua51 and so on,
 #As long as sol2 supports it, it should work here.
@@ -26,14 +27,16 @@ executable(
 	    'src/ECS/EntityWrapper.cpp',
 		'src/ObjectBuilder.cpp',
 		'src/TextureHandler.cpp',
+		'src/AudioHandler.cpp',
 		'src/Canvas_LayerData.cpp',
 		'src/Canvas.cpp',
 		'src/Engine.cpp',
 		'src/Main.cpp'
 	],
 	dependencies:[
-		sdl2,
+		sdl2_core,
 		sdl2_image,
+		sdl2_mixer,
 		json,
 		lua,
 		sol2,

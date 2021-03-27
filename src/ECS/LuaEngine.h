@@ -4,8 +4,8 @@
 
 #define SOL_ALL_SAFETIES_ON 1
 #include <sol/sol.hpp>
-
-//Singleton stolen gracefully from here: https://stackoverflow.com/questions/1008019/c-singleton-design-pattern
+#include "EntityWrapper.h"
+#include "../AudioHandler.h"
 
 class LuaEngine
 {
@@ -14,7 +14,6 @@ public:
 
     void initScript(const std::string& script);
     void runScript();
-    void updScript(const std::string& script);
 
     sol::state* gLu();
 

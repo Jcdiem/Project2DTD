@@ -14,7 +14,7 @@ namespace animToolkit {
         int frames;
         int framerate;
 
-        void addByPath(char* path) {
+        void addByPath(std::string path) {
             texture = TextureHandler::loadTexture(path);
         }
     };

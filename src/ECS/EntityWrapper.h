@@ -5,8 +5,8 @@
 #include "InputManager.h"
 
 #include "EntityComponentSystem.h"
-#include "DataComponent.h"
-#include "SpriteComponent.h"
+#include "src/ECS/Components/DataComponent.h"
+#include "src/ECS/Components/SpriteComponent.h"
 
 //Add methods for all possible components!
 class EntityWrapper {

@@ -2,6 +2,13 @@
   "objects": {
     "dvd": {
       "self": "assets/objects/dvd.json",
+      "values": {
+        "x": 200,
+        "y": 200,
+        "rot": 0,
+        "vflip": false,
+        "hflip": false
+      },
       "children": {
         "childDvd": {
           "self": "assets/objects/dvd.json"
@@ -11,5 +18,11 @@
     "dvdNoChildren": {
       "self": "assets/objects/dvd.json"
     }
+  },
+  "sfx": {
+    "explosion": "assets/sfx/explosion.wav"
+  },
+  "music": {
+    "FTTV": "assets/music/FloatingThroughTheVoid.ogg"
   }
 }

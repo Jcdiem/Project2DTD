@@ -6,5 +6,12 @@
   "move_up_fast": [225, 26],
   "move_left_fast": [225, 4],
   "move_right_fast": [225, 7],
-  "move_down_fast": [225, 22]
+  "move_down_fast": [225, 22],
+  "C4": [30],
+  "D4": [31],
+  "E4": [32],
+  "F4": [33],
+  "G4": [34],
+  "A4": [35],
+  "B4": [36]
 }

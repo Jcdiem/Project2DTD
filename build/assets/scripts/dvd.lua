@@ -12,6 +12,10 @@ function init()
 
     self:refreshBindings()
 
+    if (not sound_manager.playingMUS) then
+        sound_manager.playMUS("FTTV")
+    end
+
 -- This function call may not work as it __may__ be overwritten by some internal calls
 -- (in the init function, it works elsewhere)
 --    self:resetRotPos()
@@ -30,12 +34,13 @@ function main()
     --    children[1]:kill();
     --end
 
-    if not (parent == nil) then
-        self.rotX = parent.x - self.realX
-        self.rotY = parent.y - self.realY
-        --parent:kill()
-        --Killing a parent also kills the children (maybe this can be changed later?)
-    end
+    --if not (parent == nil) then
+    --    self.rotX = parent.x - self.realX
+    --    self.rotY = parent.y - self.realY
+    --    --parent:kill()
+    --    --Killing a parent also kills the children (maybe this can be changed later?)
+    --end
+
     if parent == nil then
         if(self:isPressed("move_up"))
         then
@@ -77,6 +82,7 @@ function main()
         then
             self.x = self.x + xStep
         else
+            sound_manager.playSFX("explosion")
             xStep = xStep * -1
             self.x = self.x + xStep
             self.hflip = not self.hflip;
@@ -87,6 +93,7 @@ function main()
         then
             self.y = self.y + yStep
         else
+            sound_manager.playSFX("explosion")
             yStep = yStep * -1
             self.y = self.y + yStep
             self.vflip = not self.vflip;

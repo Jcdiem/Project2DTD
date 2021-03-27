@@ -26,24 +26,62 @@ std::vector<std::string> ObjectBuilder::genLevelList() {
     return levelList;
 }
 
-void ObjectBuilder::genObjs(Manager* man, std::string levelPath) {
+void ObjectBuilder::genLevel(Manager* man, std::string levelPath) {
     nlohmann::json file;
     try {
-        file = nlohmann::json::parse(std::fstream(levelPath), nullptr, true, true)["objects"];
-    }
-    catch(nlohmann::json::exception &e) {
+        file = nlohmann::json::parse(std::fstream(levelPath), nullptr, true, true);
+    } catch(nlohmann::json::exception &e) {
         std::throw_with_nested(std::runtime_error("Level file could not be found or it was improperly formatted."));
     }
 
-    for (auto obj = file.begin(); obj != file.end(); ++obj)
-    {
+    nlohmann::json objects = file["objects"];
+    nlohmann::json sfx = file["sfx"];
+    nlohmann::json music = file["music"];
+
+    for(auto sf = sfx.begin(); sf != sfx.end(); ++sf){
+        AudioHandler::loadSFX(sf.key(), sf.value());
+    }
+
+    for(auto mus = music.begin(); mus != music.end(); ++mus){
+        AudioHandler::loadMUS(mus.key(), mus.value());
+    }
+
+    //Sounds come first so they can be accessed by init scripts
+
+    for(auto obj = objects.begin(); obj != objects.end(); ++obj){
         recurseChildren(man, obj, nullptr);
     }
 }
 
 Entity* ObjectBuilder::recurseChildren(Manager* man, auto root, Entity* parent) {
     try {
-        auto entity = objFromJson(man, root.value()["self"], root.key(), parent);
+        Entity* entity = objFromJson(man, root.value()["self"], root.key(), parent);
+
+        if(root->contains("values")) {
+            for (auto val = root.value()["values"].begin(); val != root.value()["values"].end(); ++val) {
+                DataComponent* data = &entity->getComponent<DataComponent>();
+                if(val.key() == "x")
+                    data->x = val.value();
+                else if(val.key() == "y")
+                    data->y = val.value();
+                else if(val.key() == "w")
+                    data->w = val.value();
+                else if(val.key() == "h")
+                    data->h = val.value();
+                else if(val.key() == "rotX")
+                    data->rotX = val.value();
+                else if(val.key() == "rotY")
+                    data->rotY = val.value();
+                else if(val.key() == "rot")
+                    data->rot = val.value();
+                else if(val.key() == "vflip")
+                    data->vflip = val.value();
+                else if(val.key() == "hflip")
+                    data->hflip = val.value();
+                else if(val.key() == "hidden")
+                    data->hidden = val.value();
+            }
+        }
 
         if(root->contains("children")) {
             for (auto child = root.value()["children"].begin(); child != root.value()["children"].end(); ++child) {
@@ -93,31 +131,6 @@ Entity* ObjectBuilder::objFromJson(Manager* man, std::string path, std::string n
     nlohmann::json values = file["values"];
 
     curObj.addComponent<DataComponent>();
-    DataComponent* eData = &curObj.getComponent<DataComponent>();
-
-    for(auto kvPair = values.begin(); kvPair != values.end(); ++kvPair) {
-        if(kvPair.key() == "x") {
-            eData->x = kvPair.value().get<float>();
-        }
-        if(kvPair.key() == "y") {
-            eData->y = kvPair.value().get<float>();
-        }
-        if(kvPair.key() == "rotX") {
-            eData->rotX = kvPair.value().get<float>();
-        }
-        if(kvPair.key() == "rotY") {
-            eData->rotY = kvPair.value().get<float>();
-        }
-        if(kvPair.key() == "rot") {
-            eData->rot = kvPair.value().get<float>();
-        }
-        if(kvPair.key() == "vflip") {
-            eData->vflip = kvPair.value().get<bool>();
-        }
-        if(kvPair.key() == "hflip") {
-            eData->hflip = kvPair.value().get<bool>();
-        }
-    }
 
     for(auto component = components.begin(); component != components.end(); ++component)
     {
@@ -131,7 +144,7 @@ Entity* ObjectBuilder::objFromJson(Manager* man, std::string path, std::string n
                 auto* curAnim = new animToolkit::animation;
 
                 //Req'd properties
-                curAnim->addByPath(&anim.value()["path"].get<std::string>()[0]);
+                curAnim->addByPath(anim.value()["path"].get<std::string>());
                 curAnim->width = anim.value()["width"].get<int>();
                 curAnim->height = anim.value()["height"].get<int>();
 

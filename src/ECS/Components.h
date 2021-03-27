@@ -4,9 +4,9 @@
 
 //Include order matters, last has access to prior, first does not have access to later
 #include "EntityComponentSystem.h"
-#include "DataComponent.h"
-#include "SpriteComponent.h"
-#include "ScriptComponent.h"
+#include "src/ECS/Components/DataComponent.h"
+#include "src/ECS/Components/SpriteComponent.h"
+#include "src/ECS/Components/ScriptComponent.h"
 
 class Components{
 

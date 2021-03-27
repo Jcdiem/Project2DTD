@@ -1,5 +1,6 @@
 {
   "levels": {
-    "level 0":  "assets/levels/debug.json"
+    "level 0": "assets/levels/piano.json",
+    "level 1": "assets/levels/debug.json"
   }
 }

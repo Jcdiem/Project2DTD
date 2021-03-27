@@ -1,15 +1,18 @@
 #include "TextureHandler.h"
-#include <cstdio>
 
 SDL_Renderer* TextureHandler::renderer = nullptr;
 
-SDL_Texture* TextureHandler::loadTexture(const char *filename) {
-    SDL_Surface* tempSurface = IMG_Load(filename);
+void TextureHandler::setRenderer(SDL_Renderer *ren) {
+    renderer = ren;
+}
+
+SDL_Texture* TextureHandler::loadTexture(const std::string& filename) {
+    SDL_Surface* tempSurface = IMG_Load(filename.c_str());
 
     //Detect error in image loading.
     if(!tempSurface) {
-        printf("IMG_Load: %s\n", IMG_GetError());
-        printf("Loading fallback image...\n");
+        std::cout << "IMG_Load: " << IMG_GetError() << std::endl;
+        std::cout << "Loading fallback image" << std::endl;
         tempSurface = IMG_Load("assets/textures/null.png");
     }
 
@@ -33,8 +36,4 @@ void TextureHandler::Draw(SDL_Texture *texture, SDL_Rect src, SDL_Rect dest, dou
 
 void TextureHandler::Draw(SDL_Texture *texture, SDL_Rect src, SDL_Rect dest, double angle, SDL_Point center, SDL_RendererFlip flip) {
     SDL_RenderCopyEx(renderer, texture, &src, &dest, angle, &center, flip);
-}
-
-void TextureHandler::setRenderer(SDL_Renderer *ren) {
-    renderer = ren;
 }

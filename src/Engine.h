@@ -9,6 +9,8 @@
 #include <vector>
 
 #include "TextureHandler.h"
+#include "AudioHandler.h"
+
 #include "Canvas.h"
 #include "ObjectBuilder.h"
 
@@ -24,8 +26,6 @@ public:
 
 
     void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen, bool resizable, int threads);
-
-    //void loadEntity(EntityType* entity);
 
     void handleEvents();
     void update();

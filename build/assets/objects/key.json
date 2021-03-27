@@ -1,0 +1,21 @@
+{
+  "dvd": {
+    "components": {
+      "ScriptComponent": {
+        "path": "assets/scripts/key.lua"
+      },
+      "SpriteComponent": {
+        "0": {
+          "path": "assets/textures/keyUnpressed.png",
+          "width": 183,
+          "height": 720
+        },
+        "1": {
+          "path": "assets/textures/keyPressed.png",
+          "width": 183,
+          "height": 720
+        }
+      }
+    }
+  }
+}

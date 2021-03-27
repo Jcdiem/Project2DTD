@@ -1,0 +1,59 @@
+{
+  "objects": {
+    "C4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 0
+      }
+    },
+    "D4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 183
+      }
+    },
+    "E4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 366
+      }
+    },
+    "F4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 549
+      }
+    },
+    "G4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 732
+      }
+    },
+    "A4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 915
+      }
+    },
+    "B4": {
+      "self": "assets/objects/key.json",
+      "values": {
+        "x": 1098
+      }
+    }
+  },
+  "sfx": {
+    "C4": "assets/sfx/C4.wav",
+    "D4": "assets/sfx/D4.wav",
+    "E4": "assets/sfx/E4.wav",
+    "F4": "assets/sfx/F4.wav",
+    "G4": "assets/sfx/G4.wav",
+    "A4": "assets/sfx/A4.wav",
+    "B4": "assets/sfx/B4.wav",
+    "explosion": "assets/sfx/explosion.wav"
+  },
+  "music": {
+    "FTTV": "assets/music/FloatingThroughTheVoid.ogg"
+  }
+}
