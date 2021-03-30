@@ -43,8 +43,7 @@ executable(
 		json,
 		lua,
 		sol2,
-		thread,
-		audio
+		thread
 	],
 	link_args:[
 	]

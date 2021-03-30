@@ -10,7 +10,7 @@ namespace AudioHandler {
     namespace {
     }
 
-    //
+    //Core
     int init();
     int kill();
     std::string what();
