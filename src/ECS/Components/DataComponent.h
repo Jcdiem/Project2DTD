@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2D_ENTITYDATA_H
-#define PROJECT2D_ENTITYDATA_H
+#ifndef P2D_ENTITYDATA_H
+#define P2D_ENTITYDATA_H
 
 //Where entity data is stored, IE: Position Data, but any component can store things here if they want :)
 struct DataComponent : public Component {
@@ -18,4 +18,4 @@ struct DataComponent : public Component {
     bool hidden;
 };
 
-#endif //PROJECT2D_ENTITYDATA_H
+#endif //P2D_ENTITYDATA_H

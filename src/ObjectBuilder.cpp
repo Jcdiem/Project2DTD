@@ -38,6 +38,7 @@ void ObjectBuilder::genLevel(Manager* man, std::string levelPath) {
     nlohmann::json sfx = file["sfx"];
     nlohmann::json music = file["music"];
 
+    /*
     for(auto sf = sfx.begin(); sf != sfx.end(); ++sf){
         AudioHandler::loadSFX(sf.key(), sf.value());
     }
@@ -45,6 +46,7 @@ void ObjectBuilder::genLevel(Manager* man, std::string levelPath) {
     for(auto mus = music.begin(); mus != music.end(); ++mus){
         AudioHandler::loadMUS(mus.key(), mus.value());
     }
+    */
 
     //Sounds come first so they can be accessed by init scripts
 

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2DTD_ENTITYCOMPONENTSYSTEM_H
-#define PROJECT2DTD_ENTITYCOMPONENTSYSTEM_H
+#ifndef P2D_ENTITYCOMPONENTSYSTEM_H
+#define P2D_ENTITYCOMPONENTSYSTEM_H
 #include <utility>
 #include <vector>
 #include <memory>
@@ -242,4 +242,4 @@ private:
     int windowH;
 };
 
-#endif //PROJECT2DTD_ENTITYCOMPONENTSYSTEM_H
+#endif //P2D_ENTITYCOMPONENTSYSTEM_H

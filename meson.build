@@ -1,15 +1,19 @@
-project('P2D', 'cpp', default_options:['cpp_std=gnu++2a'])
+project('P2D', 'cpp')
+
+#cppc = meson.get_compiler('cpp')
 
 #Standard Deps
 sdl2_core = dependency('SDL2')
 sdl2_image = dependency('SDL2_image')
-sdl2_mixer = dependency('SDL2_mixer')
-lua = dependency('lua')
+lua = dependency('luajit')
 #Replace 'lua' with whatever flavor you prefer, IE: luajit, lua, lua53, lua52, lua51 and so on,
 #As long as sol2 supports it, it should work here.
 
 #Meson Built-ins
 thread = dependency('threads')
+
+#math = cppc.find_library('m', required : false)
+#dlopen = cppc.find_library('dl', required : false)
 
 #Submodules
 nlohmann_json = include_directories('libs/json/include')
@@ -17,7 +21,6 @@ json = declare_dependency(include_directories: nlohmann_json)
 
 phd_sol2 = include_directories('libs/sol2/include')
 sol2 = declare_dependency(include_directories: phd_sol2)
-
 
 executable(
 	'P2D',
@@ -28,6 +31,7 @@ executable(
 		'src/ObjectBuilder.cpp',
 		'src/TextureHandler.cpp',
 		'src/AudioHandler.cpp',
+		'src/AudioHelpers.cpp',
 		'src/Canvas_LayerData.cpp',
 		'src/Canvas.cpp',
 		'src/Engine.cpp',
@@ -36,11 +40,11 @@ executable(
 	dependencies:[
 		sdl2_core,
 		sdl2_image,
-		sdl2_mixer,
 		json,
 		lua,
 		sol2,
-		thread
+		thread,
+		audio
 	],
 	link_args:[
 	]

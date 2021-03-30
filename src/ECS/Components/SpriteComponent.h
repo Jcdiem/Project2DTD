@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2DTD_SPRITECOMPONENT_H
-#define PROJECT2DTD_SPRITECOMPONENT_H
+#ifndef P2D_SPRITECOMPONENT_H
+#define P2D_SPRITECOMPONENT_H
 
 #include "SDL2/SDL.h"
 #include "../EntityComponentSystem.h"
@@ -128,4 +128,4 @@ private:
 };
 
 
-#endif //PROJECT2DTD_SPRITECOMPONENT_H
+#endif //P2D_SPRITECOMPONENT_H

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2D_INPUTMANAGER_H
-#define PROJECT2D_INPUTMANAGER_H
+#ifndef P2D_INPUTMANAGER_H
+#define P2D_INPUTMANAGER_H
 
 #include <SDL2/SDL.h>
 #include <nlohmann/json.hpp>
@@ -32,4 +32,4 @@ private:
     const Uint8 *keystate;
 };
 
-#endif //PROJECT2D_INPUTMANAGER_H
+#endif //P2D_INPUTMANAGER_H

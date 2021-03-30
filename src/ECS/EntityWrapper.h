@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BUILD_ENTITYWRAPPER_H
-#define BUILD_ENTITYWRAPPER_H
+#ifndef P2D_ENTITYWRAPPER_H
+#define P2D_ENTITYWRAPPER_H
 
 #include "InputManager.h"
 
@@ -70,4 +70,4 @@ private:
 };
 
 
-#endif //BUILD_ENTITYWRAPPER_H
+#endif //P2D_ENTITYWRAPPER_H

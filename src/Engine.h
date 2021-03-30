@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2DTD_ENGINE_H
-#define PROJECT2DTD_ENGINE_H
+#ifndef P2D_ENGINE_H
+#define P2D_ENGINE_H
 #include <SDL2/SDL.h>
 #include <chrono>
 #include <random>
@@ -53,4 +53,4 @@ private:
     std::vector<std::string> levelList;
 };
 
-#endif //PROJECT2DTD_ENGINE_H
+#endif //P2D_ENGINE_H

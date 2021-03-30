@@ -40,18 +40,18 @@ void Engine::init(const char *title, int xpos, int ypos, int width, int height, 
             TextureHandler::setRenderer(renderer);
             std::cout << "Renderer initialized" << std::endl;
         } else {
-            std::throw_with_nested(std::runtime_error(std::string("SDL_CreateRenderer failed: %s\n").append(SDL_GetError())));
+            std::throw_with_nested(std::runtime_error(std::string("SDL_CreateRenderer failed: ").append(SDL_GetError())));
         }
 
-        if(Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) != -1 ) {
-            std::cout << "Audio system initialized" << std::endl;
+        if(AudioHandler::init() == 0) {
+            std::cout << "Audio engine initialized" << std::endl;
         } else {
-            std::throw_with_nested(std::runtime_error(std::string("Mixer init failed failed: %s\n").append(SDL_GetError())));
+            std::throw_with_nested(std::runtime_error(std::string("Audio init failed: ").append(AudioHandler::what())));
         }
 
         isRunning = true;
     } else {
-        std::throw_with_nested(std::runtime_error(std::string("SDL_Init failed: %s\n").append(SDL_GetError())));
+        std::throw_with_nested(std::runtime_error(std::string("SDL_Init failed: ").append(SDL_GetError())));
     }
 
     SDL_GetWindowSize(window, engineWidth, engineHeight);
@@ -112,10 +112,13 @@ void Engine::clean() {
     std::cout << "Killed window" << std::endl;
     SDL_DestroyRenderer(renderer);
     std::cout << "Killed renderer" << std::endl;
-    AudioHandler::cleanup();
-    std::cout << "Cleaned up Sounds" << std::endl;
 
-    Mix_Quit();
+    if(AudioHandler::kill() == 0) {
+        std::cout << "Killed audio engine" << std::endl;
+    } else {
+        std::cout << "Audio engine failed to terminate!\n\t: " << AudioHandler::what() << std::endl;
+    }
+
     IMG_Quit();
     SDL_Quit();
 

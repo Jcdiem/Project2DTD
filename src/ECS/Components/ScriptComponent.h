@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2DTD_POSITIONCOMPONENT_H
-#define PROJECT2DTD_POSITIONCOMPONENT_H
+#ifndef P2D_POSITIONCOMPONENT_H
+#define P2D_POSITIONCOMPONENT_H
 
 #include <string>
 #include <fstream>
@@ -72,4 +72,4 @@ private:
 };
 
 
-#endif //PROJECT2DTD_POSITIONCOMPONENT_H
+#endif //P2D_POSITIONCOMPONENT_H

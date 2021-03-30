@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2DTD_COMPONENTS_H
-#define PROJECT2DTD_COMPONENTS_H
+#ifndef P2D_COMPONENTS_H
+#define P2D_COMPONENTS_H
 
 //Include order matters, last has access to prior, first does not have access to later
 #include "EntityComponentSystem.h"
@@ -12,4 +12,4 @@ class Components{
 
 };
 
-#endif //PROJECT2DTD_COMPONENTS_H
+#endif //P2D_COMPONENTS_H

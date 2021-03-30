@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PROJECT2DTD_TEXTUREHANDLER_H
-#define PROJECT2DTD_TEXTUREHANDLER_H
+#ifndef P2D_TEXTUREHANDLER_H
+#define P2D_TEXTUREHANDLER_H
 
 #include <iostream>
 #include "SDL2/SDL.h"
@@ -19,4 +19,4 @@ private:
 };
 
 
-#endif //PROJECT2DTD_TEXTUREHANDLER_H
+#endif //P2D_TEXTUREHANDLER_H

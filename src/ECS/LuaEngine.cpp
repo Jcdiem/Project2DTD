@@ -33,6 +33,7 @@ LuaEngine::LuaEngine() {
     entity_data["getChildren"] = &EntityWrapper::getChildren;
     entity_data["addChild"] = &EntityWrapper::addChild;
 
+    /*
     sol::usertype<AudioHandler> sound_manager =
             lua.new_usertype<AudioHandler>("sound_manager", sol::no_constructor);
 
@@ -55,7 +56,7 @@ LuaEngine::LuaEngine() {
 
     sound_manager["playingSFX"] = sol::property(&AudioHandler::playingSFX);
     sound_manager["playingMUS"] = sol::property(&AudioHandler::playingMUS);
-
+    */
 }
 
 void LuaEngine::initScript(const std::string& script) {

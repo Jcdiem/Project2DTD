@@ -1,11 +1,10 @@
 #pragma once
-#ifndef PROJECT2D_LUAENGINE_H
-#define PROJECT2D_LUAENGINE_H
+#ifndef P2D_LUAENGINE_H
+#define P2D_LUAENGINE_H
 
 #define SOL_ALL_SAFETIES_ON 1
 #include <sol/sol.hpp>
 #include "EntityWrapper.h"
-#include "../AudioHandler.h"
 
 class LuaEngine
 {
@@ -27,4 +26,4 @@ private:
 };
 
 
-#endif //PROJECT2D_LUAENGINE_H
+#endif //P2D_LUAENGINE_H
