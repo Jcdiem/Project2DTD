@@ -33,30 +33,22 @@ LuaEngine::LuaEngine() {
     entity_data["getChildren"] = &EntityWrapper::getChildren;
     entity_data["addChild"] = &EntityWrapper::addChild;
 
-    /*
-    sol::usertype<AudioHandler> sound_manager =
-            lua.new_usertype<AudioHandler>("sound_manager", sol::no_constructor);
+    sol::usertype<ALLEGRO_SAMPLE_ID> sample =
+            lua.new_usertype<ALLEGRO_SAMPLE_ID>("sample", sol::no_constructor);
+
+    sol::usertype<void> sound_manager =
+            lua.new_usertype<void>("sound_manager", sol::no_constructor);
 
     sound_manager["playSFX"] = sol::overload(
-            sol::resolve<int(const std::string&)>(&AudioHandler::playSFX),
-            sol::resolve<int(const std::string&, int)>(&AudioHandler::playSFX),
-            sol::resolve<int(const std::string&, int, int)>(&AudioHandler::playSFX));
-    sound_manager["playMUS"] = sol::overload(
-            sol::resolve<void(const std::string&)>(&AudioHandler::playMUS),
-            sol::resolve<void(const std::string&, int)>(&AudioHandler::playMUS));
-
-    sound_manager["freeSFX"] = &AudioHandler::freeSFX;
-    sound_manager["freeMUS"] = &AudioHandler::freeMUS;
+            sol::resolve<ALLEGRO_SAMPLE_ID*(const std::string&)>(&AudioHandler::playSFX),
+            sol::resolve<ALLEGRO_SAMPLE_ID*(const std::string&, float)>(&AudioHandler::playSFX),
+            sol::resolve<ALLEGRO_SAMPLE_ID*(const std::string&, float, float)>(&AudioHandler::playSFX));
+    sound_manager["playMUS"] = &AudioHandler::playMUS;
 
     sound_manager["haltSFX"] = &AudioHandler::haltSFX;
     sound_manager["haltMUS"] = &AudioHandler::haltMUS;
 
-    sound_manager["resumeSFX"] = &AudioHandler::resumeSFX;
-    sound_manager["resumeMUS"] = &AudioHandler::resumeMUS;
-
-    sound_manager["playingSFX"] = sol::property(&AudioHandler::playingSFX);
     sound_manager["playingMUS"] = sol::property(&AudioHandler::playingMUS);
-    */
 }
 
 void LuaEngine::initScript(const std::string& script) {

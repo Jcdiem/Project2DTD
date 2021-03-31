@@ -5,6 +5,8 @@ project('P2D', 'cpp')
 #Standard Deps
 sdl2_core = dependency('SDL2')
 sdl2_image = dependency('SDL2_image')
+acodec = dependency('allegro_acodec-5')
+audio = dependency('allegro_audio-5')
 lua = dependency('luajit')
 #Replace 'lua' with whatever flavor you prefer, IE: luajit, lua, lua53, lua52, lua51 and so on,
 #As long as sol2 supports it, it should work here.
@@ -31,7 +33,6 @@ executable(
 		'src/ObjectBuilder.cpp',
 		'src/TextureHandler.cpp',
 		'src/AudioHandler.cpp',
-		'src/AudioHelpers.cpp',
 		'src/Canvas_LayerData.cpp',
 		'src/Canvas.cpp',
 		'src/Engine.cpp',
@@ -43,7 +44,9 @@ executable(
 		json,
 		lua,
 		sol2,
-		thread
+		thread,
+		audio,
+		acodec
 	],
 	link_args:[
 	]

@@ -84,6 +84,8 @@ void Engine::handleEvents() {
 }
 
 void Engine::update() {
+    AudioHandler::cleanDead();
+
     manager.refresh();
 
     if(multithread) {
@@ -112,12 +114,8 @@ void Engine::clean() {
     std::cout << "Killed window" << std::endl;
     SDL_DestroyRenderer(renderer);
     std::cout << "Killed renderer" << std::endl;
-
-    if(AudioHandler::kill() == 0) {
-        std::cout << "Killed audio engine" << std::endl;
-    } else {
-        std::cout << "Audio engine failed to terminate!\n\t: " << AudioHandler::what() << std::endl;
-    }
+    AudioHandler::kill();
+    std::cout << "Killed audio engine" << std::endl;
 
     IMG_Quit();
     SDL_Quit();

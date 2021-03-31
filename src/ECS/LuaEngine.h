@@ -4,7 +4,10 @@
 
 #define SOL_ALL_SAFETIES_ON 1
 #include <sol/sol.hpp>
+#include <allegro5/allegro_audio.h>
+
 #include "EntityWrapper.h"
+#include "../AudioHandler.h"
 
 class LuaEngine
 {

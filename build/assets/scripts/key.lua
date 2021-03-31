@@ -10,25 +10,22 @@ function init()
 
     if self.x == 0 then
         key = "C4"
-        channel = 0
     elseif self.x == 183 then
         key = "D4"
-        channel = 1
     elseif self.x == 366 then
         key = "E4"
-        channel = 2
     elseif self.x == 549 then
         key = "F4"
-        channel = 3
     elseif self.x == 732 then
         key = "G4"
-        channel = 4
     elseif self.x == 915 then
         key = "A4"
-        channel = 5
     elseif self.x == 1098 then
         key = "B4"
-        channel = 6
+    end
+
+    if(not sound_manager.playingMUS) then
+        sound_manager.playMUS("FTTV")
     end
 
     self:refreshBindings()
@@ -37,9 +34,11 @@ end
 function main()
     if self:isPressed(key) then
         self:playAnim(1, -1)
-        sound_manager.playSFX(key, -1, channel)
+        sfx = sound_manager.playSFX(key)
     else
         self:playAnim(0, -1)
-        sound_manager.haltSFX(channel)
+        if not (sfx == nil) then
+            sound_manager.haltSFX(sfx)
+        end
     end
 end
